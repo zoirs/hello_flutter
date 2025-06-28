@@ -17,17 +17,6 @@ void main() async {
   await Hive.openBox<Word>('words');
   await loadWordsFromFile(); 
   runApp(const MyApp());
-  final csvString = '''
-Name,Age,Note
-"Smith, John",30,"Works in ""IT"", loves pizza"
-Doe,25,Student
-''';
-
-  final rows = const CsvToListConverter().convert(csvString);
-  
-  for (final row in rows) {
-    print(row);
-  }
 }
 
 Future<void> loadWordsFromFile() async {
@@ -86,6 +75,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
-  
 }
