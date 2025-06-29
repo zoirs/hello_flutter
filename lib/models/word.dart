@@ -5,33 +5,33 @@ part 'word.g.dart';
 @HiveType(typeId: 0)
 class Word extends HiveObject {
   @HiveField(0)
-  String word;
+  int id;
 
   @HiveField(1)
-  String translation;
+  String word;
 
   @HiveField(2)
-  String partOfSpeech;
+  String translation;
 
   @HiveField(3)
-  int rank;
+  String partOfSpeech;
 
   @HiveField(4)
-  double frequency;
+  int rank;
 
   @HiveField(5)
-  String example;
+  double frequency;
 
   @HiveField(6)
-  int correctCount;
+  String example;
 
   Word({
+    required this.id,
     required this.word,
     required this.translation,
     required this.partOfSpeech,
     required this.rank,
     required this.frequency,
-    required this.example,
-    this.correctCount = 0,
+    required this.example
   });
 }

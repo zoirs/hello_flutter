@@ -1,10 +1,12 @@
-import 'package:hello_flutter/models/WordStatus.dart';
+import 'package:hello_flutter/models/word_status.dart';
 import 'package:hive/hive.dart';
 
-@HiveType(typeId: 2)
+part 'user_word_data.g.dart';
+
+@HiveType(typeId: 1)
 class UserWordData extends HiveObject {
   @HiveField(0)
-  final String wordId;
+  final int wordId;
 
   @HiveField(1)
   WordStatus status;

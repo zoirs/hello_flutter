@@ -1,50 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'word.dart';
+part of 'user_word_data.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WordAdapter extends TypeAdapter<Word> {
+class UserWordDataAdapter extends TypeAdapter<UserWordData> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  Word read(BinaryReader reader) {
+  UserWordData read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Word(
-      id: fields[0] as int,
-      word: fields[1] as String,
-      translation: fields[2] as String,
-      partOfSpeech: fields[3] as String,
-      rank: fields[4] as int,
-      frequency: fields[5] as double,
-      example: fields[6] as String,
+    return UserWordData(
+      wordId: fields[0] as int,
+      status: fields[1] as WordStatus,
+      lastReviewed: fields[2] as DateTime?,
+      correctAnswers: fields[3] as int,
+      addedAt: fields[4] as DateTime?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Word obj) {
+  void write(BinaryWriter writer, UserWordData obj) {
     writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.word)
-      ..writeByte(2)
-      ..write(obj.translation)
-      ..writeByte(3)
-      ..write(obj.partOfSpeech)
-      ..writeByte(4)
-      ..write(obj.rank)
       ..writeByte(5)
-      ..write(obj.frequency)
-      ..writeByte(6)
-      ..write(obj.example);
+      ..writeByte(0)
+      ..write(obj.wordId)
+      ..writeByte(1)
+      ..write(obj.status)
+      ..writeByte(2)
+      ..write(obj.lastReviewed)
+      ..writeByte(3)
+      ..write(obj.correctAnswers)
+      ..writeByte(4)
+      ..write(obj.addedAt);
   }
 
   @override
@@ -53,7 +47,7 @@ class WordAdapter extends TypeAdapter<Word> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WordAdapter &&
+      other is UserWordDataAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

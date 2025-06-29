@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:hello_flutter/services/user_progress_service.dart';
 import '../models/word.dart';
 import '../services/word_service.dart';
 import 'word_result_page.dart';
@@ -28,16 +30,18 @@ class _WordLearningPageState extends State<WordLearningPage> {
 
   void checkAnswer(String selected) async {
     final isCorrect = selected == currentWord!.translation;
+    UserProgressService userProgressService = GetIt.instance<UserProgressService>();
 
     if (isCorrect) {
-      currentWord!.correctCount++;
-      await currentWord!.save();
+      userProgressService.incAnswer(currentWord!.id);
+      // currentWord!.correctCount++;
+      // await currentWord!.save();
     }
-
+    final answer = userProgressService.getUserProgress(currentWord!.id)!.correctAnswers;
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => WordResultPage(word: currentWord!, isCorrect: isCorrect),
+        builder: (_) => WordResultPage(word: currentWord!, isCorrect: isCorrect, progress: answer),
       ),
     );
 

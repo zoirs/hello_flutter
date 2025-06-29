@@ -5,11 +5,13 @@ import 'models/word.dart';
 class WordResultPage extends StatelessWidget {
   final Word word;
   final bool isCorrect;
+  final int progress;
 
   const WordResultPage({
     super.key,
     required this.word,
     required this.isCorrect,
+    required this.progress,
   });
 
   @override
@@ -43,7 +45,7 @@ class WordResultPage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                'Прогресс: ${word.correctCount}/5',
+                'Прогресс: ${progress}/5',
                 style: TextStyle(fontSize: 16, color: Colors.grey[600]),
               ),
 
@@ -74,8 +76,8 @@ class WordResultPage extends StatelessWidget {
                 context: context,
                 label: 'Сбросить прогресс',
                 onTap: () async {
-                  word.correctCount = 0;
-                  await word.save();
+                  // word.correctCount = 0;
+                  await word.save(); 
                   Navigator.pop(context, 'next');
                 },
               ),
